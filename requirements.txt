@@ -1,0 +1,9 @@
+# Phu thuoc cho du an YOLO Smart Lamp / Giam sat an ninh
+# Cai bang: pip install -r requirements.txt
+#
+# LUU Y GPU: neu may co GPU NVIDIA, hay cai torch ban CUDA truoc
+# theo huong dan tai https://pytorch.org (vi cac script dung device='0', half=True).
+
+ultralytics
+opencv-python
+requests

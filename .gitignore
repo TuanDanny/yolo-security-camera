@@ -1,0 +1,24 @@
+# Python virtual environment
+yolo_env/
+**/yolo_env/
+
+# Model weights (nang, tai lai tu Ultralytics khi can)
+models/*.pt
+*.pt
+
+# Ket qua YOLO xuat ra
+runs/
+*.avi
+*.mp4
+
+# Cache Python
+__pycache__/
+*.pyc
+
+# File cau hinh chua thong tin nhay cam (neu ban tach credentials ra day)
+config.local.py
+.env
+
+# Cac project khong lien quan (giu local, KHONG day len repo public)
+# python/ la Pacman AI (UC Berkeley) - co dieu khoan cam cong bo loi giai.
+other-projects/
