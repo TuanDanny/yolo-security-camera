@@ -15,24 +15,23 @@ set CONFIDENCE=0.50
 set DEVICE=0
 set SAVE_OUTPUT=True
 
-REM Neu may khong co GPU NVIDIA/CUDA, doi dong tren thanh:
-REM set DEVICE=cpu
-REM Neu muon chinh xac hon nhung cham hon, doi MODEL thanh models\yolov8m.pt hoac models\yolov8l.pt
+REM Neu may khong co GPU NVIDIA/CUDA, doi thanh: set DEVICE=cpu
+REM Muon chinh xac hon: doi MODEL thanh models\yolov8m.pt hoac models\yolov8l.pt
 
-echo Kich hoat moi truong ao 'yolo_env'...
-call yolo_env\Scripts\activate.bat
-if %errorlevel% neq 0 (
-    echo LOI: Khong the kich hoat moi truong ao.
+REM Goi thang 'yolo' CLI cua venv (bo qua 'activate' vi venv da bi doi duong dan)
+set "VENV_YOLO=%CD%\yolo_env\Scripts\yolo.exe"
+if not exist "%VENV_YOLO%" (
+    echo LOI: Khong tim thay "%VENV_YOLO%".
+    echo Tao lai venv: python -m venv yolo_env ^&^& yolo_env\Scripts\activate ^&^& pip install -r requirements.txt
     pause
     exit /b
 )
 
-echo Moi truong ao da san sang.
 echo Camera index: %CAMERA_INDEX%  Model: %MODEL%  Device: %DEVICE%
 echo Ket qua neu luu se nam trong thu muc runs\detect\laptop_cam_yolo
 echo.
 
-yolo predict model=%MODEL% source=%CAMERA_INDEX% show=True conf=%CONFIDENCE% device=%DEVICE% save=%SAVE_OUTPUT% project=runs\detect name=laptop_cam_yolo exist_ok=True
+"%VENV_YOLO%" predict model=%MODEL% source=%CAMERA_INDEX% show=True conf=%CONFIDENCE% device=%DEVICE% save=%SAVE_OUTPUT% project=runs\detect name=laptop_cam_yolo exist_ok=True
 
 echo.
 echo Chuong trinh da ket thuc.

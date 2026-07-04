@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Camera Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">🎥</span>
+      <div>
+        <h1>Security Camera Dashboard</h1>
+        <p class="subtitle">Giám sát đa camera · YOLOv8 · RTSP</p>
+      </div>
+    </div>
+    <div class="summary">
+      <div class="chip">
+        <span class="chip-label">Camera online</span>
+        <span class="chip-value"><b id="s-online">0</b>/<span id="s-total">0</span></span>
+      </div>
+      <div class="chip">
+        <span class="chip-label">Cảnh báo</span>
+        <span class="chip-value" id="s-alerts">0</span>
+      </div>
+      <div class="chip">
+        <span class="chip-label">FPS TB</span>
+        <span class="chip-value" id="s-fps">0</span>
+      </div>
+      <div class="chip clock">
+        <span class="chip-label">Thời gian</span>
+        <span class="chip-value" id="s-clock">--:--:--</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="grid">
+    {% for cam in cameras %}
+    <section class="card" id="card-{{ cam.id }}" data-id="{{ cam.id }}">
+      <div class="card-head">
+        <span class="dot" id="dot-{{ cam.id }}"></span>
+        <span class="cam-name">{{ cam.name }}</span>
+        <span class="status-text" id="status-{{ cam.id }}">…</span>
+      </div>
+      <div class="video-wrap">
+        <img class="video" src="{{ url_for('video', cam_id=cam.id) }}" alt="{{ cam.name }}">
+        <span class="alert-badge" id="alert-{{ cam.id }}">● ĐANG PHÁT HIỆN</span>
+      </div>
+      <div class="card-foot">
+        <span class="stat"><i>FPS</i><b id="fps-{{ cam.id }}">0</b></span>
+        <span class="stat"><i>Phát hiện</i><b id="det-{{ cam.id }}">0</b></span>
+        <span class="stat"><i>Cảnh báo</i><b id="alerts-{{ cam.id }}">0</b></span>
+        <span class="stat"><i>Gần nhất</i><b id="last-{{ cam.id }}">—</b></span>
+      </div>
+    </section>
+    {% endfor %}
+
+    {% for i in range(cameras|length, max_cameras) %}
+    <section class="card empty">
+      <div class="empty-inner">
+        <span class="empty-plus">＋</span>
+        <span>Chưa cấu hình camera</span>
+        <small>Thêm trong <code>cameras.json</code></small>
+      </div>
+    </section>
+    {% endfor %}
+  </main>
+
+  <footer class="footborder">
+    yolo-security-camera · dashboard RTSP (tối đa {{ max_cameras }} camera)
+  </footer>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

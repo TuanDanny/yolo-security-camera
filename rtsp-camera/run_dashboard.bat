@@ -4,7 +4,7 @@ REM Di chuyen ve thu muc goc repo
 cd /d "%~dp0.."
 
 echo ===================================================
-echo     ESP32-CAM - Stream truc tiep trong mang LAN
+echo     SECURITY CAMERA DASHBOARD (RTSP - toi da 4 cam)
 echo ===================================================
 echo.
 
@@ -17,9 +17,11 @@ if not exist "%VENV_PY%" (
     exit /b
 )
 
-echo Bat dau chay esp32-cam\detect_esp32_local.py...
-"%VENV_PY%" esp32-cam\detect_esp32_local.py
+echo Khoi dong dashboard... Mo trinh duyet tai http://127.0.0.1:5000
+echo Nhan Ctrl+C de dung.
+echo.
+"%VENV_PY%" rtsp-camera\dashboard\app.py
 
 echo.
-echo Chuong trinh da ket thuc.
+echo Dashboard da dung.
 pause

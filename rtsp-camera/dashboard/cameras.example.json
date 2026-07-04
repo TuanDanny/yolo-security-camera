@@ -1,0 +1,34 @@
+{
+  "settings": {
+    "model": "yolov8n.pt",
+    "confidence": 0.4,
+    "device": "0",
+    "half": true,
+    "imgsz": 640,
+    "process_every_n_frames": 1,
+    "target_classes": [0],
+    "port": 5000
+  },
+  "cameras": [
+    {
+      "name": "Cong chinh",
+      "source": "rtsp://admin:YOUR_PASSWORD@192.168.1.10:554/",
+      "esp32_ip": ""
+    },
+    {
+      "name": "San sau",
+      "source": "rtsp://admin:YOUR_PASSWORD@192.168.1.11:554/",
+      "esp32_ip": ""
+    },
+    {
+      "name": "Webcam (test)",
+      "source": "0",
+      "esp32_ip": ""
+    },
+    {
+      "name": "Kho hang",
+      "source": "rtsp://admin:YOUR_PASSWORD@192.168.1.13:554/",
+      "esp32_ip": ""
+    }
+  ]
+}

@@ -10,7 +10,8 @@ Máy tính chạy YOLO đọc luồng RTSP để nhận diện người và (tù
 |------|-------|
 | `detect_rtsp.py` | Kết nối camera EZVIZ qua **RTSP** (`rtsp://user:pass@ip:554/`), nhận diện người, điều khiển đèn ESP32 |
 | `detect_ip_webcam.py` | Biến thể: đọc luồng **HTTP MJPEG** từ app *IP Webcam* trên điện thoại (nhận diện người, ly, ghế, bàn) |
-| `run_rtsp.bat` / `run_ip_webcam.bat` | Kích hoạt `yolo_env` và chạy script tương ứng |
+| [`dashboard/`](dashboard/) | **🆕 Dashboard web giám sát tối đa 4 camera RTSP cùng lúc** (YOLOv8, lưới 2×2, realtime) |
+| `run_rtsp.bat` / `run_ip_webcam.bat` / `run_dashboard.bat` | Kích hoạt `yolo_env` và chạy script tương ứng |
 
 > `detect_ip_webcam.py` dùng luồng HTTP chứ không phải RTSP, nhưng cách đọc luồng
 > camera mạng qua `cv2.VideoCapture(URL)` giống nhau nên được gom chung ở đây.
@@ -31,6 +32,7 @@ thành `http://<IP-dien-thoai>:8080/video`.
 ```bat
 run_rtsp.bat            REM camera EZVIZ qua RTSP
 run_ip_webcam.bat       REM app IP Webcam dien thoai
+run_dashboard.bat       REM dashboard web giam sat 4 camera (xem dashboard/README.md)
 ```
 
 ## ⚠️ Bảo mật

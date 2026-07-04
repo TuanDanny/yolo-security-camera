@@ -18,7 +18,11 @@ __pycache__/
 # File cau hinh chua thong tin nhay cam (neu ban tach credentials ra day)
 config.local.py
 .env
+rtsp-camera/dashboard/cameras.json
 
 # Cac project khong lien quan (giu local, KHONG day len repo public)
 # python/ la Pacman AI (UC Berkeley) - co dieu khoan cam cong bo loi giai.
 other-projects/
+
+# Cau hinh IDE / preview cuc bo (theo tung may)
+.claude/
